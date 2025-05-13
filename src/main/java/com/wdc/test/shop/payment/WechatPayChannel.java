@@ -38,21 +38,28 @@ public class WechatPayChannel implements PaymentChannel {
 
     @Override
     public boolean processCallback(String transactionId, String status) {
-        Payment payment = paymentRepository.findAll().stream()
-                .filter(p -> transactionId.equals(p.getTransactionId()))
-                .findFirst()
-                .orElse(null);
+        try {
+            Payment payment = paymentRepository.findAll().stream()
+                    .filter(p -> transactionId.equals(p.getTransactionId()))
+                    .findFirst()
+                    .orElse(null);
+                    
+            if (payment != null) {
+                payment.setStatus(status);
+                paymentRepository.save(payment);
                 
-        if (payment != null) {
-            payment.setStatus(status);
-            paymentRepository.save(payment);
-            
-            // 更新订单状态
-            if ("SUCCESS".equals(status)) {
-                orderService.updateOrderStatus(payment.getOrderId(), "PAID");
+                // 更新订单状态
+                if ("SUCCESS".equals(status)) {
+                    orderService.updateOrderStatus(payment.getOrderId(), "PAID");
+                }
+                return true;
             }
-            return true;
+            return false;
+        } catch (Exception e) {
+            // 记录异常信息
+            System.err.println("处理微信支付回调时发生错误: " + e.getMessage());
+            e.printStackTrace();
+            return false;
         }
-        return false;
     }
 }

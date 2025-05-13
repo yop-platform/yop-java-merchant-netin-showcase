@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "yop-mcp": {
+      "command": "/Users/yp-21022/Develop/Cursor/yop-mcp-server/.venv/bin/python",
+      "args": [
+        "/Users/yp-21022/Develop/Cursor/yop-mcp-server/main.py"
+      ],
+      "description": "易宝智能对接助手"
+    }
+  }
+}
