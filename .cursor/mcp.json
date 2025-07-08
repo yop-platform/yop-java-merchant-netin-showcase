@@ -1,11 +1,16 @@
 {
   "mcpServers": {
     "yop-mcp": {
-      "command": "/Users/yp-21022/Develop/Cursor/yop-mcp-server/.venv/bin/python",
+      "command": "uvx",
       "args": [
-        "/Users/yp-21022/Develop/Cursor/yop-mcp-server/main.py"
+        "yop-mcp"
       ],
       "description": "易宝智能对接助手"
+    },
+    "interactive-feedback-mcp": {
+      "command": "uvx",
+      "args": ["mcp-feedback-enhanced@latest"],
+      "autoApprove": "interactive_feedback"
     }
   }
 }

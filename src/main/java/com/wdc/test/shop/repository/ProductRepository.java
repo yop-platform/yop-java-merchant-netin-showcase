@@ -15,7 +15,7 @@ public class ProductRepository {
 
     public ProductRepository() {
         // 初始化两个商品
-        save(new Product(null, "iPhone 13", "Apple iPhone 13 128GB", 5999.00, 100));
+        save(new Product(null, "iPhone 13", "Apple iPhone 13 128GB", 0.01, 100));
         save(new Product(null, "MacBook Pro", "Apple MacBook Pro 14-inch", 12999.00, 50));
     }
 

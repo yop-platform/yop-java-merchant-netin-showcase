@@ -25,9 +25,16 @@ public class PaymentRepository {
         return payments.get(id);
     }
 
-    public Payment findByOrderId(Long orderId) {
+    public Payment findBySystemOrderId(Long systemOrderId) {
         return payments.values().stream()
-                .filter(payment -> payment.getOrderId().equals(orderId))
+                .filter(payment -> systemOrderId.equals(payment.getSystemOrderId()))
+                .findFirst()
+                .orElse(null);
+    }
+    
+    public Payment findByOrderId(String orderId) {
+        return payments.values().stream()
+                .filter(payment -> orderId.equals(payment.getOrderId()))
                 .findFirst()
                 .orElse(null);
     }

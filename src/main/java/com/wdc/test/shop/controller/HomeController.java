@@ -8,6 +8,11 @@ public class HomeController {
     
     @GetMapping("/")
     public String home() {
-        return "redirect:/products";
+        return "index";
+    }
+
+    @GetMapping("/payment/mcp-merchant-register-apply")
+    public String mcpMerchantRegisterApply() {
+        return "/payment/mcp-merchant-register-apply";
     }
 }
