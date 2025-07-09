@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "yop-mcp": {
+      "command": "uvx",
+      "args": [
+        "yop-mcp"
+      ],
+      "description": "易宝智能对接助手"
+    },
+    "interactive-feedback-mcp": {
+      "command": "uvx",
+      "args": ["mcp-feedback-enhanced@latest"],
+      "autoApprove": "interactive_feedback"
+    }
+  }
+}
